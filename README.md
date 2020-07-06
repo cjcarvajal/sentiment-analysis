@@ -23,14 +23,14 @@ What tools did I use:
 The preprocessing of data have three phases: reading data, cleaning and vectorizing text and
 splitting in training, testing, and unlabeled data sets. For the first phase, I read the csv files for training and testing from the [files section](#about-the-files-used), merge the two data sets and select a random sample for 10000 records. I create this subset for memory issues on my machine, actually I ran this experiment on a Mac with 8 GB RAM, so if you have a better machine (or make improvements on the script to improve efficiency) you could try running with more records.
 
-I just read a lot of blogs entrances on sentiment analysis with the same approach: to train a model and to obtain performance metrics using a test dataset, but none of these post explain how to use the trained model to predict values on new data (the real value of the model), so I wrote the script to put an example on how to do it. For that reasons I select a subset of 10% of the records, and remove the label, assigning a new value for the label column of -1.
+I just read a lot of blogs entrances on sentiment analysis with the same approach: to train a model and to obtain performance metrics using a test dataset, but none of these posts explain how to use the trained model to predict values on new data (the real value of the model), so I wrote the script to put an example on how to do it. For that reasons I select a subset of 10% of the records, and remove the label, assigning a new value for the label column of -1.
 
 ```
 sample_size = int(0.01 * len(merged_df))
 merged_df.iloc[-sample_size:]['label'] = -1
 ```
 
-For the data cleaning, I remove the html tags from the text, pass all text to lower case, and remove the stopwords. I used TF-IDF vectorization to get the vector representation of each review.
+For the data cleaning, I remove the html tags from the text, pass all text to lower case, and remove the stopwords. I used TF-IDF vectorisation to get the vector representation of each review.
 
 I use the final portion of the dataset as the new data to predict, using fixed position, so I split the data set into classified and unclassified:
 
