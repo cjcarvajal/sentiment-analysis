@@ -51,7 +51,6 @@ merged_df = merged_df.sample(n=10000)
 # Assing -1 label on random records to simulate not classified data
 # First select a sample of 1 % of the records
 sample_size = int(0.01 * len(merged_df))
-#sample = merged_df.sample(int(sample_size))
 merged_df.iloc[-sample_size:]['label'] = -1
 
 new_records_df = merged_df.loc[merged_df['label']==-1]
