@@ -68,7 +68,7 @@ Notice the phrases on the review that represent the negative and positive sentim
 
 ### Execution
 
-Clone this repository into your machine, download the Test.csv and Train.csv from [Kaggle](https://www.kaggle.com/columbine/imdb-dataset-sentiment-analysis-in-csv-format) and place this files in the folder of the cloned repo. Remember you should have Python3 installed and the modules discused in (#tech-stack). Then execute the script with:
+Clone this repository into your machine, download the Test.csv and Train.csv from [Kaggle](https://www.kaggle.com/columbine/imdb-dataset-sentiment-analysis-in-csv-format) and place these files in the folder of the cloned repo. Remember you should have Python3 installed and the modules discused in [Tech stack](#tech-stack). Then execute the script with:
 
 ```
 python3 sentiment_analysis.py
