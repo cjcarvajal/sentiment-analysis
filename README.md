@@ -66,6 +66,16 @@ In the final part of the script, I use the trained model on the **unclassified_f
 
 Notice the phrases on the review that represent the negative and positive sentiments on each example.
 
+### Execution
+
+Clone this repository into your machine, download the Test.csv and Train.csv from [Kaggle](https://www.kaggle.com/columbine/imdb-dataset-sentiment-analysis-in-csv-format) and place this files in the folder of the cloned repo. Remember you should have Python3 installed and the modules discused in (#tech-stack). Then execute the script with:
+
+```
+python3 sentiment_analysis.py
+```
+
+The output of the results are printed in screen, the predicted values are saved on a file **predicted_data.csv** that youl will find in the repo folder after running the process.
+
 ## References
 <a id="1">[1]</a> 
 Maas, Andrew L.  and  Daly, Raymond E.  and  Pham, Peter T.  and  Huang, Dan  and  Ng, Andrew Y.  and  Potts, Christopher (2011).
