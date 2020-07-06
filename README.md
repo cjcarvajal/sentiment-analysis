@@ -1,6 +1,8 @@
 # sentiment-analysis
 
-A little chit chat here about the theory on sentiment analysis and NLP
+Sentiment analysis is a growing area of research on [NLP](https://nlp.stanford.edu/), it persues the extraction of subjetive information from texts, specifically the sentiments of a person towards an aspect of an entity. In many cases the person holding the sentiment is the author of the text, but this doesn't apply to all cases, as the author may be narrating the view of a third person (or entity). The knowledge obtained by the sentiment analysis may be the input for autonomous systems or to serve as support for a decission maker. In today's world, sentiment analysis is applied on sales platforms like Amazon, to evaluate a product or even in social networks, to map the peoples opinion. This last use case may be of great value on [elections](https://www.theatlantic.com/technology/archive/2020/04/how-facebooks-ad-technology-helps-trump-win/606403/) for example, where the analysis of a live Twitter streaming may size the popularity of a candidate, or even, to drive the speech on debates.
+
+In this repo, you will find an example to perform sentiment analysis training a model and using it to predict sentiments on new texts.
 
 ## About the files used
 
