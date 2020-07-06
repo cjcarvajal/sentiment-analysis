@@ -46,6 +46,19 @@ The results of this method are:
 | 0  | 0.67 | 0.80 | 0.73 | 1467 |
 | 1  | 0.76 | 0.61 | 0.68 | 1503 |
 
+The accuracy of the model is around 0.706.
+
+### Getting predictions
+
+In the final part of the script, I use the trained model on the unclassified_features, which contains the vector representations of the reviews with no label discussed on [Preprocessing](#preprocessing) and save a new file with the text review and the predicted label. For example I get this predictions:
+
+| Text | Label |
+|------|-------|
+|Wow this movie **sucked big time**. I heard this movie expresses the meaning of friendship very well. And with all the internet hype on this movie I figured what could go wrong? However the movie was just **plain bad**... | 0 |
+|This Is one of **my favourite westerns**. **What a cast!** Glenn Ford plays his role In his usual mild ... | 1 |
+
+Notice the phrases on the review that represent the negative and positive sentiments on each example.
+
 ## References
 <a id="1">[1]</a> 
 Maas, Andrew L.  and  Daly, Raymond E.  and  Pham, Peter T.  and  Huang, Dan  and  Ng, Andrew Y.  and  Potts, Christopher (2011).
