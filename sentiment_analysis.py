@@ -9,7 +9,7 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 # use the one which best fits for you 
 from sklearn.ensemble import RandomForestClassifier
 
-language_stopwords = stopwords.words('spanish')
+language_stopwords = stopwords.words('english')
 non_words = list(punctuation)
 non_words.extend(['¿', '¡'])
 
