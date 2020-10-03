@@ -53,8 +53,8 @@ The **predictor.py** use the trained model to make predictions, in this script I
 
 | Review | Sentiment |
 |------|-------|
-|It's simultaneously difficult to watch and yet, impossible to take your eyes off Joaquin Phoenix in this film that may become the definitive origin tale of the Joker.  | 0 |
-|This was the **worst** movie I've ever seen, so bad that I hesitate to label it a 'movie' and thus reflect **shame** upon the entire medium of film.| 1 |
+|It's simultaneously difficult to watch and yet, impossible to take your eyes off Joaquin Phoenix in this film that may become the definitive origin tale of the Joker.  | 1 |
+|This was the **worst** movie I've ever seen, so bad that I hesitate to label it a 'movie' and thus reflect **shame** upon the entire medium of film.| 0 |
 |The Devil Inside is yet another **dull** found footage effort with nothing, bar a mad climax, to offer audiences.| 0 |
 |One of the **smartest**, most inventive movies in memory, it manages to be as endearing as it is provocative.| 1 |
 
