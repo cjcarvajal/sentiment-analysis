@@ -6,7 +6,7 @@ In this repo, you will find an example to perform sentiment analysis training a 
 
 ## About the files used
 
-To train and test the model, I use an existing repository on IMDB reviews [[1]](#1), please go to the [web site](http://ai.stanford.edu/~amaas/data/sentiment/) for further information. The dataset contains a column for the review text and a label column for the sentiment, being 0 a negative review and 1 a positive.
+To train and test the model, I used an existing repository on IMDB reviews [[1]](#1), please go to the [web site](http://ai.stanford.edu/~amaas/data/sentiment/) for further information. The dataset contains a column for the review text and a label column for the sentiment, being 0 a negative review and 1 a positive.
 
 ## Tech stack
 
@@ -21,7 +21,7 @@ What tools did I use:
 ### Preprocessing
 
 The preprocessing of data have three phases: reading data, cleaning and vectorizing text and
-splitting in training, testing, and unlabeled data sets. For the first phase, I read the csv files for training and testing from the [files section](#about-the-files-used) and merge the two data sets, I use the sklearn [train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) method to divide the sets.
+splitting in training and testing sets. For the first phase, I read the csv files for training and testing from the [files section](#about-the-files-used) and merge the two data sets, I use the sklearn [train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) method to divide the sets.
 
 I just read a lot of blogs entrances on sentiment analysis with the same approach: to train a model and to obtain performance metrics using a test dataset, but none of these posts explain how to use the trained model to predict values on new data (the real value of the model), in this script I used the pipeline feature, to train and store the model and then to use it with unseen data.
 
@@ -35,7 +35,7 @@ For the data cleaning, I remove the html tags from the text, pass all text to lo
 
 ### Training
 
-I use a **RandomForestClassifier** as experiment, you could use some others [classification methods](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.ensemble) to get better results.
+I used a **RandomForestClassifier** as experiment, you could use some others [classification methods](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.ensemble) to get better results.
 
 The results of this method are:
 
@@ -44,7 +44,7 @@ The results of this method are:
 | 0  | 0.72 | 0.83  | 0.77 | 6757 |
 | 1  | 0.80 | 0.68 | 0.74 | 6743 |
 
-The accuracy of the model is around 0.755.
+The accuracy of the model is 0.755.
 
 ### Getting predictions
 
