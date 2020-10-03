@@ -35,22 +35,10 @@ def remove_punctuation(dirty_string):
 		dirty_string = dirty_string.replace(word, '')
 	return dirty_string
 
-'''
-def train_test_split(classified_features, classified_labels):
-	train_boundary_index = int(0.3 * len(classified_features))
-	X_train = classified_features[:-train_boundary_index]
-	X_test = classified_features[-train_boundary_index:]
-	y_train = classified_labels[:-train_boundary_index]
-	y_test = classified_labels[-train_boundary_index:]
-	return X_train, X_test, y_train, y_test
-'''
-
 train_df = process_file("Train.csv")
 test_df = process_file("Test.csv")
 
 merged_df = pd.concat([train_df,test_df])
-# Due to memory issues, take a sample of the total dataset
-merged_df = merged_df.sample(n=10000)
 
 # Clean the dataset
 # Remove all nan
