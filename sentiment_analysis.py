@@ -4,6 +4,9 @@ from nltk.corpus import stopwords
 from bs4 import BeautifulSoup
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+import pickle
 
 # Evaluate the algorithms to select the best one for the problem and 
 # use the one which best fits for you 
@@ -32,6 +35,7 @@ def remove_punctuation(dirty_string):
 		dirty_string = dirty_string.replace(word, '')
 	return dirty_string
 
+'''
 def train_test_split(classified_features, classified_labels):
 	train_boundary_index = int(0.3 * len(classified_features))
 	X_train = classified_features[:-train_boundary_index]
@@ -39,6 +43,7 @@ def train_test_split(classified_features, classified_labels):
 	y_train = classified_labels[:-train_boundary_index]
 	y_test = classified_labels[-train_boundary_index:]
 	return X_train, X_test, y_train, y_test
+'''
 
 train_df = process_file("Train.csv")
 test_df = process_file("Test.csv")
@@ -46,13 +51,6 @@ test_df = process_file("Test.csv")
 merged_df = pd.concat([train_df,test_df])
 # Due to memory issues, take a sample of the total dataset
 merged_df = merged_df.sample(n=10000)
-
-# Assing -1 label on random records to simulate not classified data
-# First select a sample of 1 % of the records
-sample_size = int(0.01 * len(merged_df))
-merged_df.iloc[-sample_size:]['label'] = -1
-
-new_records_df = merged_df.loc[merged_df['label']==-1]
 
 # Clean the dataset
 # Remove all nan
@@ -65,33 +63,28 @@ final_dataframe['text'] = final_dataframe['text'].str.lower()
 # Remove punctuation and spanish stopwords
 final_dataframe['text'] = final_dataframe['text'].apply(remove_punctuation).apply(remove_stop_words)
 
-# Tokenization
-#TF-IDF
+# Pipeline instantiation, first defines a vectorization method and the an algorithm to classify
 vectorizer = TfidfVectorizer ()
-X = vectorizer.fit_transform(final_dataframe['text'])
-
-# Separate labels and features
-processed_features = X.toarray()
-classified_features = processed_features[:-sample_size]
-unclassified_features = processed_features[-sample_size:]
-classified_labels = final_dataframe[final_dataframe['label']!=-1]['label']
-
-# Divide training and test separete_classified_data
-X_train, X_test, y_train, y_test = train_test_split(classified_features, classified_labels)
-
-# Algorithm training
 text_classifier = RandomForestClassifier()
-text_classifier.fit(X_train, y_train)
+training_pipe = Pipeline([('vectorizer',vectorizer),('text_classifier',text_classifier)])
+
+# Divide training and test sets
+train_df, test_df = train_test_split(final_dataframe, test_size=0.3, random_state=0)
+
+train_data = train_df['text']
+train_target = train_df['label']
+
+test_data = test_df['text']
+test_target = test_df['label']
+
+training_pipe.fit(train_data,train_target)
 
 # Predictions over the test data
-predictions = text_classifier.predict(X_test)
+predictions = training_pipe.predict(test_data)
 
-print(confusion_matrix(y_test,predictions))
-print(classification_report(y_test,predictions))
-print(accuracy_score(y_test, predictions))
+print(confusion_matrix(test_target,predictions))
+print(classification_report(test_target,predictions))
+print(accuracy_score(test_target, predictions))
 
-# Predictions over new data
-predictions = text_classifier.predict(unclassified_features)
-
-new_records_df['label'] = predictions
-new_records_df.to_csv('predicted_data.csv', encoding='utf-8')
+# Save the model
+pickle.dump(training_pipe, open('sentiment_model.sav','wb'))
